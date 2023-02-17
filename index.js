@@ -64,9 +64,9 @@ bot.onText(/\/startDripStatsBotNow/, async function dripStatsBot(msg) {
 
     while (true) {
         bot.sendMessage(msg.chat.id, `
-Total DRIP Wallets: ${numFor.format(await Total_Drip_Wallets())}
-Total DRIP in Wallets: ${numFor.format(await Total_Drip_In_Wallets())}
-Total DRIP Supply: ${numFor.format(await Total_Drip_Supply())}\n
+DRIP Wallets: ${numFor.format(await Total_Drip_Wallets())}
+DRIP in Wallets: ${numFor.format(await Total_Drip_In_Wallets())}
+DRIP Supply: ${numFor.format(await Total_Drip_Supply())}\n
 *PANCAKESWAP*
 Liquidity: ${numForCur.format(await Drip_Pcs_Liquidity())}
 BUSD Supply: ${numFor.format(await Drip_Pcs_Busd_Balance())}
