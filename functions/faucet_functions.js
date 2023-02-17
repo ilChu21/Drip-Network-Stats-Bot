@@ -1,4 +1,5 @@
-import { provider, ethers } from '../index.js';
+import { ethers } from 'ethers';
+import { provider } from '../index.js';
 import { FAUCET_ADDRESS, FAUCET_ABI } from '../contracts/faucet_contract.js';
 
 

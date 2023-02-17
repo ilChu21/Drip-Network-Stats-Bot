@@ -1,4 +1,5 @@
-import { provider, ethers } from '../index.js';
+import { ethers } from 'ethers';
+import { provider } from '../index.js';
 import { RESERVOIR_ADDRESS, RESERVOIR_ABI } from '../contracts/reservoir_contract.js';
 import { Total_Circulating_Drop, Fountain_Liquidity } from './fountain_functions.js';
 import { Bnb_Pcs_Price } from './bnb_functions.js';
