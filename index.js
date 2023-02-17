@@ -1,4 +1,5 @@
 import 'dotenv/config.js';
+import { ethers } from 'ethers';
 import TelegramBot from 'node-telegram-bot-api';
 
 import {
@@ -44,6 +45,9 @@ import {
 } from './functions/pcs_drip_functions.js';
 
 
+export const provider = new ethers.providers.JsonRpcProvider(`https://bsc-mainnet.gateway.pokt.network/v1/lb/${process.env.POKT_Portal_ID}`);
+
+
 const TOKEN = process.env.TELEGRAM_API_KEY;
 
 const bot = new TelegramBot(TOKEN, {polling: true});
@@ -64,16 +68,17 @@ bot.onText(/\/startDripStatsBotNow/, async function dripStatsBot(msg) {
 
     while (true) {
         bot.sendMessage(msg.chat.id, `
-*💧 DRIP NETWORK STATS 💧*
 Total DRIP Wallets: ${numFor.format(await Total_Drip_Wallets())}
 Total DRIP in Wallets: ${numFor.format(await Total_Drip_In_Wallets())}
 Total DRIP Supply: ${numFor.format(await Total_Drip_Supply())}\n
-*PCS* (Liquidity ${numForCur.format(await Drip_Pcs_Liquidity())})
+*PANCAKESWAP*
+Liquidity: ${numForCur.format(await Drip_Pcs_Liquidity())}
 BUSD Supply: ${numFor.format(await Drip_Pcs_Busd_Balance())}
 DRIP Supply: ${numFor.format(await Pcs_Drip_Balance())}
 BUSD Price: ${numForCur.format(await Busd_Pcs_Price())}
 DRIP Price: (${numForCur.format(await Drip_Pcs_Price()).replace(`$`,``)} BUSD) ${numForCur.format(await Drip_Pcs_Price())}\n
-*FOUNTAIN* (Liquidity ${numForCur.format(await Fountain_Liquidity())})
+*FOUNTAIN*
+Liquidity: ${numForCur.format(await Fountain_Liquidity())}
 BNB Supply: ${numFor.format(await Fountain_Bnb_Balance())}
 DRIP Supply: ${numFor.format(await Fountain_Drip_Balance())}
 BNB Price: ${numForCur.format(await Bnb_Pcs_Price())}
@@ -88,6 +93,6 @@ Locked DROP: ${numFor.format(await Locked_Drop())}
 DROP Price: (${numForCur.format(await Drop_Bnb_Price()).replace(`$`,``)} BNB) ${numForCur.format(await Drop_Price())}
         `, opts);
 
-        await delay(600000);
+        await delay(900000);
     }
 });

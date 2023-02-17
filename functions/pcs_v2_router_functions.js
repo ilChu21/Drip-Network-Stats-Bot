@@ -1,7 +1,7 @@
-import { ethers } from 'ethers';
+import { provider } from '../index.js';
 import { PCS_V2_ROUTER_ADDRESS, PCS_V2_ROUTER_ABI } from '../contracts/pcs_v2_router_contract.js';
 
-const provider = new ethers.providers.JsonRpcProvider(`https://bsc-mainnet.gateway.pokt.network/v1/lb/${process.env.POKT_Portal_ID}`);
+
 const contract = new ethers.Contract(PCS_V2_ROUTER_ADDRESS, PCS_V2_ROUTER_ABI, provider);
 
 
