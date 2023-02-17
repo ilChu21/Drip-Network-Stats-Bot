@@ -1,4 +1,4 @@
-import { provider } from '../index.js';
+import { provider, ethers } from '../index.js';
 import { PCS_V2_ROUTER_ADDRESS, PCS_V2_ROUTER_ABI } from '../contracts/pcs_v2_router_contract.js';
 
 

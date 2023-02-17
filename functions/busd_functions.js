@@ -1,4 +1,4 @@
-import { provider } from '../index.js';
+import { provider, ethers } from '../index.js';
 import { BUSD_ADDRESS, BUSD_ABI } from '../contracts/busd_contract.js';
 import { PCS_DRIP_ADDRESS } from '../contracts/pcs_drip_contract.js';
 import { USDC_ADDRESS } from '../contracts/usdc_contract.js';
