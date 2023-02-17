@@ -1,5 +1,4 @@
 import 'dotenv/config.js';
-import { ethers } from 'ethers';
 import TelegramBot from 'node-telegram-bot-api';
 
 import {
@@ -43,9 +42,6 @@ import {
     Drip_Pcs_Price,
     Drip_Pcs_Liquidity,
 } from './functions/pcs_drip_functions.js';
-
-
-export const provider = new ethers.providers.JsonRpcProvider(`https://bsc-mainnet.gateway.pokt.network/v1/lb/${process.env.POKT_Portal_ID}`);
 
 
 const TOKEN = process.env.TELEGRAM_API_KEY;
