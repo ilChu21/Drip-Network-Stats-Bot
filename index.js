@@ -1,4 +1,5 @@
 import 'dotenv/config.js';
+import { scheduleJob } from 'node-schedule';
 import TelegramBot from 'node-telegram-bot-api';
 
 import {
@@ -47,7 +48,7 @@ import {
 const TOKEN = process.env.TELEGRAM_API_KEY;
 
 const bot = new TelegramBot(TOKEN, {polling: true});
-console.log('DRIP STATS bot active.')
+console.log('DRIP STATS bot active.');
 
 
 const numFor = Intl.NumberFormat('en-US');
@@ -55,15 +56,12 @@ const numFor5 = Intl.NumberFormat('en-US', { maximumSignificantDigits: 3 });
 const numForCur = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
 
-bot.onText(/\/startDripStatsBotNow/, async function dripStatsBot(msg) {
-    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
+scheduleJob('*/2 * * * * *', async () => {
     const opts = {
         parse_mode: 'Markdown'
     }
 
-    while (true) {
-        bot.sendMessage(msg.chat.id, `
+    bot.sendMessage(process.env.CHAT_ID, `
 DRIP Wallets: ${numFor.format(await Total_Drip_Wallets())}
 DRIP in Wallets: ${numFor.format(await Total_Drip_In_Wallets())}
 DRIP Supply: ${numFor.format(await Total_Drip_Supply())}\n
@@ -88,7 +86,4 @@ DROP Supply: ${numFor.format(await Reservoir_Drop_Balance())}
 Locked DROP: ${numFor.format(await Locked_Drop())}
 DROP Price: (${numForCur.format(await Drop_Bnb_Price()).replace(`$`,``)} BNB) ${numForCur.format(await Drop_Price())}
         `, opts);
-
-        await delay(900000);
-    }
 });
