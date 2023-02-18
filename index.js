@@ -42,6 +42,7 @@ import {
 import {
     Drip_Pcs_Price,
     Drip_Pcs_Liquidity,
+    Drip_Busd_Price,
 } from './functions/pcs_drip_functions.js';
 
 
@@ -59,7 +60,7 @@ const numForCur = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD
 scheduleJob('*/15 * * * *', async () => {
     const opts = {
         parse_mode: 'Markdown'
-    }
+    };
 
     bot.sendMessage(process.env.CHAT_ID, `
 DRIP Wallets: ${numFor.format(await Total_Drip_Wallets())}
@@ -70,6 +71,7 @@ Liquidity: ${numForCur.format(await Drip_Pcs_Liquidity())}
 BUSD Supply: ${numFor.format(await Drip_Pcs_Busd_Balance())}
 DRIP Supply: ${numFor.format(await Pcs_Drip_Balance())}
 BUSD Price: ${numForCur.format(await Busd_Pcs_Price())}
+DRIP/BUSD Price: ${numForCur.format(await Drip_Busd_Price())}
 DRIP Price: (${numForCur.format(await Drip_Pcs_Price()).replace(`$`,``)} BUSD) ${numForCur.format(await Drip_Pcs_Price())}\n
 *FOUNTAIN*
 Liquidity: ${numForCur.format(await Fountain_Liquidity())}

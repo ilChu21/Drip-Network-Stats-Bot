@@ -10,29 +10,29 @@ const contract = new ethers.Contract(RESERVOIR_ADDRESS, RESERVOIR_ABI, provider)
 
 export const Total_Reservoir_Wallets = async () => {
     return await contract.players();
-}
+};
 
 
 export const Locked_Drop = async () => {
     return ethers.utils.formatEther(await contract.lockedTokenBalance());
-}
+};
 
 
 export const Balance_Of_Drop = async (address) => {
     return ethers.utils.formatEther(await contract.balanceOf(address));
-}
+};
 
 
 export const Reservoir_Drop_Balance = async () => {
     return ethers.utils.formatEther(await contract.totalTokenBalance());
-}
+};
 
 
 export const Drop_Price = async () => {
     return await Fountain_Liquidity() / await Total_Circulating_Drop();
-}
+};
 
 
 export const Drop_Bnb_Price = async () => {
     return await Drop_Price() / await Bnb_Pcs_Price();
-}
+};

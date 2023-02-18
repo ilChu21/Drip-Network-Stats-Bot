@@ -10,22 +10,22 @@ const contract = new ethers.Contract(FOUNTAIN_ADDRESS, FOUNTAIN_ABI, provider);
 
 export const Fountain_Drip_Balance = async () => {
     return ethers.utils.formatEther(await contract.tokenBalance());
-}
+};
 
 
 export const Fountain_Bnb_Balance = async () => {
     return ethers.utils.formatEther(await contract.bnbBalance());
-}
+};
 
 
 export const Bnb_Drip_Ratio = async () => {
     return ethers.utils.formatEther(await contract.getTokenToBnbInputPrice(1000000000000000000n));
-}
+};
 
 
 export const Fountain_Liquidity = async () => {
     return (await Fountain_Bnb_Balance() * await Bnb_Pcs_Price()) * 2;
-}
+};
 
 
 export const Drip_Fountain_Price = async () => {
@@ -34,9 +34,9 @@ export const Drip_Fountain_Price = async () => {
     } catch {
         return await Bnb_Drip_Ratio() * await Bnb_Pcs_Price();
     }
-}
+};
 
 
 export const Total_Circulating_Drop = async () => {
     return ethers.utils.formatEther(await contract.totalSupply());
-}
+};

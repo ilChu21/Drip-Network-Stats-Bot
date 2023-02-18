@@ -9,4 +9,4 @@ const contract = new ethers.Contract(WBNB_ADDRESS, WBNB_ABI, provider);
 
 export const Bnb_Pcs_Price = async () => {
     return await Get_Pcs_V2_Price(WBNB_ADDRESS, BUSD_ADDRESS);
-}
+};

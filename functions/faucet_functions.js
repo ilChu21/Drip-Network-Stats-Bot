@@ -8,4 +8,4 @@ const contract = new ethers.Contract(FAUCET_ADDRESS, FAUCET_ABI, provider);
 
 export const Total_Faucet_Wallets = async () => {
     return await contract.total_users();
-}
+};

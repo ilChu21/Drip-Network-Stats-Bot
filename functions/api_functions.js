@@ -8,4 +8,4 @@ export async function Fetch_Bnb_Price() {
     } catch (error) {
         return error;
     }
-}
+};

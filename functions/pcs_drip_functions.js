@@ -12,9 +12,19 @@ const contract = new ethers.Contract(PCS_DRIP_ADDRESS, PCS_DRIP_ABI, provider);
 
 export const Drip_Pcs_Price = async () => {
     return await Get_Pcs_V2_Price(DRIP_ADDRESS, BUSD_ADDRESS);
-}
+};
 
 
 export const Drip_Pcs_Liquidity = async () => {
     return (await Drip_Pcs_Busd_Balance() * await Busd_Pcs_Price()) * 2;
-}
+};
+
+
+export const Total_Circulating_Drip_Busd = async () => {
+    return ethers.utils.formatEther(await contract.totalSupply());
+};
+
+
+export const Drip_Busd_Price = async () => {
+    return await Drip_Pcs_Liquidity() / await Total_Circulating_Drip_Busd();
+};

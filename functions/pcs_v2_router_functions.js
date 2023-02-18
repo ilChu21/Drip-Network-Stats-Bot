@@ -11,4 +11,4 @@ export const Get_Pcs_V2_Price = async (tokenInAddress, tokenOutAddress) => {
     const amountOut = await contract.getAmountsIn(amountIn, [tokenOutAddress, tokenInAddress]);
 
     return ethers.utils.formatEther(amountOut[0]);
-}
+};
