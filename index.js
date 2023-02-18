@@ -56,7 +56,7 @@ const numFor5 = Intl.NumberFormat('en-US', { maximumSignificantDigits: 3 });
 const numForCur = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
 
-scheduleJob('*/2 * * * * *', async () => {
+scheduleJob('*/15 * * * *', async () => {
     const opts = {
         parse_mode: 'Markdown'
     }
