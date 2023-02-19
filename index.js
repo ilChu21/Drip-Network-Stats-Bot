@@ -45,6 +45,10 @@ import {
     Drip_Busd_Price,
 } from './functions/pcs_drip_functions.js';
 
+import {
+    Total_Garden_Lp_Locked,
+} from './functions/garden_functions.js';
+
 
 const TOKEN = process.env.TELEGRAM_API_KEY;
 
@@ -59,7 +63,7 @@ const numForCur = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD
 
 scheduleJob('*/15 * * * *', async () => {
     const opts = {
-        parse_mode: 'Markdown'
+        parse_mode: 'Markdown',
     };
 
     bot.sendMessage(process.env.CHAT_ID, `
@@ -71,7 +75,6 @@ Liquidity: ${numForCur.format(await Drip_Pcs_Liquidity())}
 BUSD Supply: ${numFor.format(await Drip_Pcs_Busd_Balance())}
 DRIP Supply: ${numFor.format(await Pcs_Drip_Balance())}
 BUSD Price: ${numForCur.format(await Busd_Pcs_Price())}
-DRIP/BUSD Price: ${numForCur.format(await Drip_Busd_Price())}
 DRIP Price: (${numForCur.format(await Drip_Pcs_Price()).replace(`$`,``)} BUSD) ${numForCur.format(await Drip_Pcs_Price())}\n
 *FOUNTAIN*
 Liquidity: ${numForCur.format(await Fountain_Liquidity())}
@@ -86,6 +89,9 @@ Tax Vault Supply: ${numFor.format(await Tax_Vault_Drip_Balance())}\n
 Wallets: ${numFor.format(await Total_Reservoir_Wallets())}
 DROP Supply: ${numFor.format(await Reservoir_Drop_Balance())}
 Locked DROP: ${numFor.format(await Locked_Drop())}
-DROP Price: (${numForCur.format(await Drop_Bnb_Price()).replace(`$`,``)} BNB) ${numForCur.format(await Drop_Price())}
+DROP Price: (${numForCur.format(await Drop_Bnb_Price()).replace(`$`,``)} BNB) ${numForCur.format(await Drop_Price())}\n
+*DRIP GARDEN*
+Total LP Locked: ${numFor.format(await Total_Garden_Lp_Locked())}
+DRIP/BUSD LP Price: ${numForCur.format(await Drip_Busd_Price())}
         `, opts);
 });
