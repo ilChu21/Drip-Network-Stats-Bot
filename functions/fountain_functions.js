@@ -31,7 +31,8 @@ export const Fountain_Liquidity = async () => {
 export const Drip_Fountain_Price = async () => {
     try {
         return await Bnb_Drip_Ratio() * await Fetch_Bnb_Price();
-    } catch {
+    } catch (err) {
+        console.error(`WBNB API Error: ${err}`);
         return await Bnb_Drip_Ratio() * await Bnb_Pcs_Price();
     }
 };
