@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 import { RESERVOIR_ADDRESS, RESERVOIR_ABI } from '../contracts/reservoir_contract.js';
 import { Total_Circulating_Drop, Fountain_Liquidity } from './fountain_functions.js';
-import { Bnb_Pcs_Price } from './bnb_functions.js';
+import { Bnb_Busd_Price } from './bnb_functions.js';
 
 
 const provider = new ethers.providers.JsonRpcProvider(`https://bsc-mainnet.gateway.pokt.network/v1/lb/${process.env.POKT_Portal_ID}`);
@@ -34,5 +34,5 @@ export const Drop_Price = async () => {
 
 
 export const Drop_Bnb_Price = async () => {
-    return await Drop_Price() / await Bnb_Pcs_Price();
+    return await Drop_Price() / await Bnb_Busd_Price();
 };

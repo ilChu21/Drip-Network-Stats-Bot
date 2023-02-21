@@ -31,28 +31,28 @@ import {
 } from './functions/reservoir_functions.js';
 
 import {
-    Bnb_Pcs_Price,
+    Bnb_Busd_Price,
 } from './functions/bnb_functions.js';
 
 import {
     Drip_Pcs_Busd_Balance,
-    Busd_Pcs_Price,
+    Busd_Usdc_Price,
 } from './functions/busd_functions.js';
 
 import {
-    Drip_Pcs_Price,
-    Drip_Pcs_Liquidity,
     Drip_Busd_Price,
-} from './functions/pcs_drip_functions.js';
+    Drip_Busd_Liquidity,
+    Drip_Busd_Lp_Price,
+} from './functions/drip_busd_functions.js';
 
 import {
     Total_Garden_Lp_Locked,
 } from './functions/garden_functions.js';
 
 
-const TOKEN = process.env.TELEGRAM_API_KEY;
+const token = process.env.TELEGRAM_API_KEY;
+const bot = new TelegramBot(token, {polling: true});
 
-const bot = new TelegramBot(TOKEN, {polling: true});
 console.log('DRIP STATS bot active.');
 
 
@@ -71,16 +71,16 @@ DRIP Wallets: ${numFor.format(await Total_Drip_Wallets())}
 DRIP in Wallets: ${numFor.format(await Total_Drip_In_Wallets())}
 DRIP Supply: ${numFor.format(await Total_Drip_Supply())}\n
 *PANCAKESWAP*
-Liquidity: ${numForCur.format(await Drip_Pcs_Liquidity())}
+Liquidity: ${numForCur.format(await Drip_Busd_Liquidity())}
 BUSD Supply: ${numFor.format(await Drip_Pcs_Busd_Balance())}
 DRIP Supply: ${numFor.format(await Pcs_Drip_Balance())}
-BUSD Price: ${numForCur.format(await Busd_Pcs_Price())}
-DRIP Price: (${numForCur.format(await Drip_Pcs_Price()).replace(`$`,``)} BUSD) ${numForCur.format(await Drip_Pcs_Price())}\n
+BUSD Price: ${numForCur.format(await Busd_Usdc_Price())}
+DRIP Price: (${numForCur.format(await Drip_Busd_Price()).replace(`$`,``)} BUSD) ${numForCur.format(await Drip_Busd_Price())}\n
 *FOUNTAIN*
 Liquidity: ${numForCur.format(await Fountain_Liquidity())}
 BNB Supply: ${numFor.format(await Fountain_Bnb_Balance())}
 DRIP Supply: ${numFor.format(await Fountain_Drip_Balance())}
-BNB Price: ${numForCur.format(await Bnb_Pcs_Price())}
+BNB Price: ${numForCur.format(await Bnb_Busd_Price())}
 DRIP Price: (${numFor5.format(await Bnb_Drip_Ratio())} BNB) ${numForCur.format(await Drip_Fountain_Price())}\n
 *FAUCET*
 Wallets: ${numFor.format(await Total_Faucet_Wallets())}
@@ -92,6 +92,6 @@ Locked DROP: ${numFor.format(await Locked_Drop())}
 DROP Price: (${numForCur.format(await Drop_Bnb_Price()).replace(`$`,``)} BNB) ${numForCur.format(await Drop_Price())}\n
 *DRIP GARDEN*
 Total LP Locked: ${numFor.format(await Total_Garden_Lp_Locked())}
-DRIP/BUSD LP Price: ${numForCur.format(await Drip_Busd_Price())}
+DRIP/BUSD LP Price: ${numForCur.format(await Drip_Busd_Lp_Price())}
         `, opts);
 });

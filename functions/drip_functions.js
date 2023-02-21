@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 import { DRIP_ADDRESS, DRIP_ABI } from '../contracts/drip_contract.js';
 import { TAX_VAULT_ADDRESS } from '../contracts/vault_contract.js';
-import { PCS_DRIP_ADDRESS } from '../contracts/pcs_drip_contract.js';
+import { DRIP_BUSD_ADDRESS } from '../contracts/drip_busd_contract.js';
 import { Fountain_Drip_Balance } from './fountain_functions.js';
 
 
@@ -25,7 +25,7 @@ export const Total_Drip_In_Wallets = async () => {
 
 
 export const Pcs_Drip_Balance = async () => {
-    return ethers.utils.formatEther(await contract.balanceOf(PCS_DRIP_ADDRESS));
+    return ethers.utils.formatEther(await contract.balanceOf(DRIP_BUSD_ADDRESS));
 };
 
 
