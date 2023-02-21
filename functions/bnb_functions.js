@@ -7,6 +7,7 @@ import { Get_Pcs_V2_Price } from './pcs_v2_router_functions.js';
 const provider = new ethers.providers.JsonRpcProvider(`https://bsc-mainnet.gateway.pokt.network/v1/lb/${process.env.POKT_Portal_ID}`);
 const contract = new ethers.Contract(WBNB_ADDRESS, WBNB_ABI, provider);
 
+
 export const Bnb_Busd_Price = async () => {
     return await Get_Pcs_V2_Price(WBNB_ADDRESS, BUSD_ADDRESS);
 };

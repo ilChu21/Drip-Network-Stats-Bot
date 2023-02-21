@@ -52,7 +52,6 @@ import {
 
 const token = process.env.TELEGRAM_API_KEY;
 const bot = new TelegramBot(token, {polling: true});
-
 console.log('DRIP STATS bot active.');
 
 
