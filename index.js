@@ -61,7 +61,7 @@ const numForCur = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD
 
 
 scheduleJob('*/15 * * * *', async () => {
-    console.time('Elapsed Time');
+    console.time('Duration');
 
     const opts = {
         parse_mode: 'Markdown',
@@ -96,5 +96,5 @@ Total LP Locked: ${numFor.format(await Total_Garden_Lp_Locked())}
 DRIP/BUSD LP Price: ${numForCur.format(await Drip_Busd_Lp_Price())}
         `, opts);
 
-        console.timeEnd('Elapsed Time:');
+        console.timeEnd('Duration');
 });
