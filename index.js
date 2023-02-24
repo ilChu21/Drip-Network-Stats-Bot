@@ -93,8 +93,7 @@ Locked DROP: ${numFor.format(await Locked_Drop())}
 DROP Price: (${numForCur.format(await Drop_Bnb_Price()).replace(`$`,``)} BNB) ${numForCur.format(await Drop_Price())}\n
 *DRIP GARDEN*
 Total LP Locked: ${numFor.format(await Total_Garden_Lp_Locked())}
-DRIP/BUSD LP Price: ${numForCur.format(await Drip_Busd_Lp_Price())}
-        `, opts);
+DRIP/BUSD LP Price: ${numForCur.format(await Drip_Busd_Lp_Price())}`, opts);
 
         console.timeEnd('Duration');
 });

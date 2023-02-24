@@ -1,10 +1,10 @@
 import { ethers } from 'ethers';
+import { provider } from '../providers/providers.js';
 import { FOUNTAIN_ADDRESS, FOUNTAIN_ABI } from '../contracts/fountain_contract.js';
 import { Fetch_Bnb_Price } from './api_functions.js';
 import { Bnb_Busd_Price } from './bnb_functions.js';
 
 
-const provider = new ethers.providers.JsonRpcProvider(`https://bsc-mainnet.gateway.pokt.network/v1/lb/${process.env.POKT_Portal_ID}`);
 const contract = new ethers.Contract(FOUNTAIN_ADDRESS, FOUNTAIN_ABI, provider);
 
 
@@ -34,7 +34,7 @@ export const Drip_Fountain_Price = async () => {
     } catch (error) {
         console.error(`WBNB API Error: ${error}`);
         return await Bnb_Drip_Ratio() * await Bnb_Busd_Price();
-    }
+    };
 };
 
 

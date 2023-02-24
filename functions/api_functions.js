@@ -7,5 +7,5 @@ export const Fetch_Bnb_Price = async () => {
         return response.data.wbnb.usd;
     } catch (error) {
         return error;
-    }
+    };
 };

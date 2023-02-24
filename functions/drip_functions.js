@@ -1,11 +1,11 @@
 import { ethers } from 'ethers';
+import { provider } from '../providers/providers.js';
 import { DRIP_ADDRESS, DRIP_ABI } from '../contracts/drip_contract.js';
 import { TAX_VAULT_ADDRESS } from '../contracts/vault_contract.js';
 import { DRIP_BUSD_ADDRESS } from '../contracts/drip_busd_contract.js';
 import { Fountain_Drip_Balance } from './fountain_functions.js';
 
 
-const provider = new ethers.providers.JsonRpcProvider(`https://bsc-mainnet.gateway.pokt.network/v1/lb/${process.env.POKT_Portal_ID}`);
 const contract = new ethers.Contract(DRIP_ADDRESS, DRIP_ABI, provider);
 
 

@@ -1,11 +1,11 @@
 import { ethers } from 'ethers';
+import { provider } from '../providers/providers.js';
 import { BUSD_ADDRESS, BUSD_ABI } from '../contracts/busd_contract.js';
 import { DRIP_BUSD_ADDRESS } from '../contracts/drip_busd_contract.js';
 import { USDC_ADDRESS } from '../contracts/usdc_contract.js';
 import { Get_Pcs_V2_Price } from './pcs_v2_router_functions.js';
 
 
-const provider = new ethers.providers.JsonRpcProvider(`https://bsc-mainnet.gateway.pokt.network/v1/lb/${process.env.POKT_Portal_ID}`);
 const contract = new ethers.Contract(BUSD_ADDRESS, BUSD_ABI, provider);
 
 
