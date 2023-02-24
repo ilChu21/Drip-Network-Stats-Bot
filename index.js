@@ -63,7 +63,7 @@ const numForCur = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD
 scheduleJob('50 14/15 * * * *', async () => {
     console.time('Duration');
     const now = new Date();
-    console.log(now.toLocaleString());
+    console.log(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
 
     const opts = {
         parse_mode: 'Markdown',
