@@ -60,8 +60,10 @@ const numFor5 = Intl.NumberFormat('en-US', { maximumSignificantDigits: 3 });
 const numForCur = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
 
-scheduleJob('*/15 * * * *', async () => {
+scheduleJob('50 14/15 * * * *', async () => {
     console.time('Duration');
+    const now = new Date();
+    console.log(now.toLocaleString());
 
     const opts = {
         parse_mode: 'Markdown',
